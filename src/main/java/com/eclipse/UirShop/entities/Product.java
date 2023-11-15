@@ -10,7 +10,6 @@ import java.util.List;
 
 @Entity
 @Table(name="products")
-@AllArgsConstructor
 @NoArgsConstructor
 public class Product {
 
@@ -35,4 +34,11 @@ public class Product {
     @JoinColumn(name = "panier_id")
     private Panier panier;
 
+    public Product(String ref, String name, double price, List<String> images, int quantity) {
+        this.ref = ref;
+        this.name = name;
+        this.price = price;
+        this.images = images;
+        this.quantity = quantity;
+    }
 }

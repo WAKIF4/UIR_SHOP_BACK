@@ -24,4 +24,9 @@ public class Panier {
     @OneToMany(mappedBy = "paniers", cascade = CascadeType.ALL)
     private List<Product> products;
 
+
+    public Panier(String ref, double totalPrice) {
+        this.ref = ref;
+        this.totalPrice = totalPrice;
+    }
 }
