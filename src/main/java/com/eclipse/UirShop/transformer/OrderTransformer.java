@@ -18,7 +18,8 @@ public class OrderTransformer {
                     order.getPayment().getModePayment(),
                     order.getPayment().getNumberCard(),
                     order.getPayment().getExpirationDate(),
-                    order.getPayment().getSecurityCode()
+                    order.getPayment().getSecurityCode(),
+                    order.getPayment().getOrder()
             );
         }
 

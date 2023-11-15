@@ -27,12 +27,13 @@ public class Payment {
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private @Getter @Setter Order order;
 
-    public Payment(String firstName, String lastName, ModePayment modePayment, String numberCard, String expirationDate, String securityCode) {
+    public Payment(String firstName, String lastName, ModePayment modePayment, String numberCard, String expirationDate, String securityCode,Order order) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.modePayment = modePayment;
         this.numberCard = numberCard;
         this.expirationDate = expirationDate;
         this.securityCode = securityCode;
+        this.order = order;
     }
 }

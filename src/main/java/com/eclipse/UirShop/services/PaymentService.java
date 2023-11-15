@@ -32,7 +32,8 @@ public class PaymentService {
                 paymentDto.getModePayment(),
                 paymentDto.getNumberCard(),
                 paymentDto.getExpirationDate(),
-                paymentDto.getSecurityCode()
+                paymentDto.getSecurityCode(),
+                paymentDto.getOrder()
         );
 
         paymentRepository.save(payment);
@@ -49,6 +50,7 @@ public class PaymentService {
             existingPayment.setNumberCard(updatedPaymentDto.getNumberCard());
             existingPayment.setExpirationDate(updatedPaymentDto.getExpirationDate());
             existingPayment.setSecurityCode(updatedPaymentDto.getSecurityCode());
+            existingPayment.setOrder(updatedPaymentDto.getOrder());
 
             paymentRepository.save(existingPayment);
             return PaymentTransformer.convertPaymentToDto(existingPayment);

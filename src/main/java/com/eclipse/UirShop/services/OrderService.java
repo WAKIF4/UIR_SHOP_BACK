@@ -32,7 +32,7 @@ public class OrderService {
                 orderDto.getTotalAmount()
         );
 
-        order.getPayment();
+
 
         orderRepository.save(order);
         return OrderTransformer.convertOrderToDto(order);
