@@ -26,7 +26,7 @@ public class StudentDto {
     @Size(min= 6, message = "Full Name must be at least 6 characteres")
     @Pattern( regexp = "^[a-zA-Z]+( [a-zA-Z]+)*$", message = "Invalid full name format. Please enter a valid full name.")
     @Getter @Setter
-    private String fullName;
+    private String fullname;
 
     @NotBlank(message = "Phone Number is required")
     @Getter @Setter
@@ -38,11 +38,16 @@ public class StudentDto {
     private String email;
 
     @Getter @Setter
-    private String biographie;
+    private String biography;
 
     @NotBlank(message = "Image is required")
     @Getter @Setter
     private String image;
+
+    /*
+    @Getter
+    @Setter
+    private MultipartFile imageFile;*/
 
     @Getter @Setter
     private String instagram;

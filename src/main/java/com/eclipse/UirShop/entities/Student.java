@@ -11,7 +11,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "student")
+@Table(name = "students")
 public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -50,8 +50,9 @@ public class Student {
     @Getter @Setter
     private String tiktok;
 
-    @OneToMany
+
+    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
     @Getter @Setter
-    List<Product> productList;
+    private List<Product> productList;
 
 }

@@ -31,8 +31,14 @@ public class Product {
     @NotBlank(message = "Quantity cannot be null")
     private @Getter @Setter int quantity;
 
+    /*
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "panier_id")
     private Panier panier;
+*/
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "student_id", nullable = false)
+    private Student student;
 
 }

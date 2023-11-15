@@ -20,8 +20,8 @@ public class Panier {
     @NotBlank(message = "Total Price cannot be null")
     private @Getter @Setter double totalPrice;
 
-
+/*
     @OneToMany(mappedBy = "paniers", cascade = CascadeType.ALL)
     private List<Product> products;
-
+*/
 }
