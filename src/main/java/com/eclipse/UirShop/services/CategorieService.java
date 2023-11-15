@@ -21,4 +21,28 @@ public class CategorieService {
         return cwl;
     }
 
+    public Optional<CategorieDtoWNList>getById(Long id){
+        Optional<Categorie> c=categorieRepository.findById(id);
+        return Optional.of(CategorieTransformer.toDtoWl(c.orElseThrow()));
+    }
+
+    public Optional<CategorieDtoWNList>addCategorie(CategorieDtoWNList cdtl){
+        Categorie categorie=categorieRepository.save(CategorieTransformer.toEntity(cdtl));
+        return Optional.of(CategorieTransformer.toDtoWl(categorie));
+    }
+
+    public Optional<CategorieDtoWNList>updateCategorie(CategorieDtoWNList cdtl,Long id){
+        Categorie categorie=CategorieTransformer.toEntity(cdtl);
+        Optional<Categorie> catToUpdate=categorieRepository.findById(id);
+        if(catToUpdate.isPresent()){
+           Categorie cat=catToUpdate.get();
+           cat.setNom(categorie.getNom());
+           return Optional.of(CategorieTransformer.toDtoWl(categorieRepository.save(cat)));
+        }
+        return Optional.empty();
+    }
+    public void deleteCategorie(Long id){
+        categorieRepository.deleteById(id);
+    }
+
 }

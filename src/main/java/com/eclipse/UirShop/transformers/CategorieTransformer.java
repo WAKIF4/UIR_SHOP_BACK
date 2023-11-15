@@ -8,12 +8,12 @@ import java.util.ArrayList;
 
 public class CategorieTransformer {
 
-//    public Categorie toEntity(CategorieDto categorieDto){
-//        Categorie c=new Categorie();
-//        c.setNom(categorieDto.getNom());
-//        c.setSous_Categorie(categorieDto.getSous_Categorie());
-//        return c;
-//    }
+    public static Categorie toEntity(CategorieDtoWNList categorieDtoWNList){
+        Categorie c=new Categorie();
+        c.setId(categorieDtoWNList.getId());
+        c.setNom(categorieDtoWNList.getNom());
+        return c;
+    }
     public static CategorieDto toDto(Categorie categorie){
         CategorieDto cdt=new CategorieDto();
 

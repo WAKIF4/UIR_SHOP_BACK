@@ -9,4 +9,8 @@ import lombok.Setter;
 public class CategorieDtoWNList {
     private  Long id;
     private  String nom;
+
+    public CategorieDtoWNList(String nom) {
+        this.nom = nom;
+    }
 }
