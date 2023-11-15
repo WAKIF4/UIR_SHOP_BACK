@@ -41,4 +41,6 @@ public class CategorieController {
         categorieService.deleteCategorie(id);
         return new ResponseEntity<>("Categorie supprime avec succes", HttpStatus.OK);
     }
+
+
 }

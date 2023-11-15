@@ -12,8 +12,12 @@ import java.util.Optional;
 
 @Service
 public class CategorieService {
-    @Autowired
-    private ICategorieRepository categorieRepository;
+
+    private final ICategorieRepository categorieRepository;
+
+    public CategorieService(ICategorieRepository categorieRepository) {
+        this.categorieRepository = categorieRepository;
+    }
 
     public List<CategorieDtoWNList>getAll(){
         Optional<List<Categorie>>categorie= Optional.of(categorieRepository.findAll());

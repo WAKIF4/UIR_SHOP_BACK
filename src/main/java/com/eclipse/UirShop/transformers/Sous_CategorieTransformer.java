@@ -1,18 +1,26 @@
 package com.eclipse.UirShop.transformers;
 
-import com.eclipse.UirShop.enitiesDto.CategorieDtoWNList;
-import com.eclipse.UirShop.enitiesDto.Sous_CategorieDto;
-import com.eclipse.UirShop.entities.Sous_Categorie;
+import com.eclipse.UirShop.enitiesDto.SousCategorieDto;
+import com.eclipse.UirShop.entities.SousCategorie;
 
 public class Sous_CategorieTransformer {
-    public Sous_Categorie toEntity(Sous_CategorieDto sgDto){
-        Sous_Categorie sg=new Sous_Categorie();
+//    @Autowired
+//    private Sous_Categorie sg;
+
+//    @Autowired
+//    private Sous_CategorieDto sgdto;
+
+    public static SousCategorie toEntity(SousCategorieDto sgDto){
+        SousCategorie sg=new SousCategorie();
+        sg.setId(sgDto.getId());
         sg.setNom(sgDto.getNom());
+        sg.setCategorie(CategorieTransformer.toEntity(sgDto.getCategorieDtoWNList()));
         return  sg;
     }
 
-    public Sous_CategorieDto toDto(Sous_Categorie sousCategorie){
-        Sous_CategorieDto sgdto=new Sous_CategorieDto();
+    public static SousCategorieDto toDto(SousCategorie sousCategorie){
+       SousCategorieDto sgdto=new SousCategorieDto();
+        sgdto.setId((sousCategorie.getId()));
         sgdto.setNom(sousCategorie.getNom());
         sgdto.setCategorieDtoWNList(CategorieTransformer.toDtoWl(sousCategorie.getCategorie()));
         return sgdto;

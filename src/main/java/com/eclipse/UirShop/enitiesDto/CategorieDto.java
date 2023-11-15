@@ -1,16 +1,15 @@
 package com.eclipse.UirShop.enitiesDto;
 
-import com.eclipse.UirShop.entities.Sous_Categorie;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import java.util.List;
 @NoArgsConstructor
 @Data
 public class CategorieDto {
     private  Long id;
+//    @NotBlank(message = "name is required")
     private  String nom;
-    private  List<Sous_CategorieDto> sous_Categorie;
+    private  List<SousCategorieDto> sous_Categorie;
 }

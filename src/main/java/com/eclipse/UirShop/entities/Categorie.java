@@ -1,10 +1,9 @@
 package com.eclipse.UirShop.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import java.util.List;
 
@@ -15,9 +14,12 @@ public class Categorie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private   Long id;
+//    @NotBlank(message = "name is required")
+    @Column(unique = true)
     private  String nom;
     @OneToMany(mappedBy = "categorie")
-    private  List<Sous_Categorie>sous_Categorie;
+
+    private  List<SousCategorie>sous_Categorie;
 
     public Categorie(String nom) {
         this.nom = nom;
