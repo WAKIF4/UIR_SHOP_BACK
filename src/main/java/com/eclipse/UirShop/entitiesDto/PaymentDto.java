@@ -14,7 +14,6 @@ public class PaymentDto {
     private @Getter @Setter String expirationDate;
     private @Getter @Setter String securityCode;
 
-    // Constructeur pour transformer depuis l'entité
     public PaymentDto(Long id, String firstName, String lastName, ModePayment modePayment, String numberCard, String expirationDate, String securityCode) {
         this.id = id;
         this.firstName = firstName;
