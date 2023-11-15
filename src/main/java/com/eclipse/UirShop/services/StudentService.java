@@ -7,8 +7,6 @@ import com.eclipse.UirShop.repositories.IStudentRepository;
 import com.eclipse.UirShop.transformerDto.StudentTransformer;
 import jakarta.persistence.EntityNotFoundException;
 import org.hibernate.Hibernate;
-import org.springframework.beans.BeanWrapper;
-import org.springframework.beans.BeanWrapperImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -21,8 +19,6 @@ public class StudentService {
 
         private final IStudentRepository studentRepository;
 
-        @Value("${file.upload.directory}")
-        private String fileUploadDirectory;
 
         @Autowired
         public StudentService(IStudentRepository studentRepository) {
@@ -56,11 +52,10 @@ public class StudentService {
 
 
     public StudentDto updateStudent(Long id, StudentDto updatedStudentDto) {
-        // Fetch the existing student entity by ID
+
         Student existingStudent = studentRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Student with id " + id + " not found"));
 
-        // Update the fields of the existing student entity with the values from the updatedStudentDto
         existingStudent.setFullname(updatedStudentDto.getFullname());
         existingStudent.setPhonenumber(updatedStudentDto.getPhonenumber());
         existingStudent.setEmail(updatedStudentDto.getEmail());
@@ -70,10 +65,8 @@ public class StudentService {
         existingStudent.setFacebook(updatedStudentDto.getFacebook());
         existingStudent.setTiktok(updatedStudentDto.getTiktok());
 
-        // Save the updated student entity back to the repository
         Student updatedStudent = studentRepository.save(existingStudent);
 
-        // Transform and return the updated student as a StudentDto
         return StudentTransformer.studentTransformToDto(updatedStudent);
     }
 
