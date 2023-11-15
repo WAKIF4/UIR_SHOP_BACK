@@ -1,6 +1,7 @@
 package com.eclipse.UirShop.entities;
 
 import com.eclipse.UirShop.enums.ModePayment;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import jdk.jfr.Name;
 import lombok.Getter;
@@ -23,6 +24,7 @@ public class Payment {
     private @Getter @Setter String securityCode;
     @OneToOne
     @JoinColumn(name = "order_id")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private @Getter @Setter Order order;
 
     public Payment(String firstName, String lastName, ModePayment modePayment, String numberCard, String expirationDate, String securityCode) {
