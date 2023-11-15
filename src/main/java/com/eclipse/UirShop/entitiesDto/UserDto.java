@@ -1,21 +1,18 @@
-package com.eclipse.UirShop.entities;
+package com.eclipse.UirShop.entitiesDto;
 
 import com.eclipse.UirShop.enums.Role;
-import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity
-@Table(name = "user")
+@Data
 @NoArgsConstructor
-public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class UserDto {
     private @Getter  Long id;
 
     @NotBlank(message = "First name is required")
@@ -43,7 +40,7 @@ public class User {
     private @Setter @Getter String phone;
     private @Setter @Getter Role role;
 
-    public User(String firstname, String lastname, String email, String phone) {
+    public UserDto(String firstname, String lastname, String email, String phone) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;
