@@ -18,6 +18,7 @@ public class Usertransformer {
             userDto.setLastname(user.getLastname());
             userDto.setRole(user.getRole());
             userDto.setPhone(user.getPhone());
+            userDto.setPassword(user.getPassword());
 
             return userDto;
         }
@@ -38,6 +39,7 @@ public class Usertransformer {
             user.setLastname(userDto.getLastname());
             user.setRole(userDto.getRole());
             user.setPhone(userDto.getPhone());
+            user.setPassword(userDto.getPassword());
 
             return user;
         } catch (Exception e) {

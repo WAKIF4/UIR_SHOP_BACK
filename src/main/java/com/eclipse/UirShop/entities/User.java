@@ -14,10 +14,10 @@ import lombok.Setter;
 @Table(name = "user")
 @NoArgsConstructor
 public class User {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private @Getter Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private @Getter  Long id;
+
     @NotBlank(message = "First name is required")
     @Size(min = 3, message = "Last name must be at least 3 characters")
     @Size(max = 20, message = "Last name must be at most 20 characters")
