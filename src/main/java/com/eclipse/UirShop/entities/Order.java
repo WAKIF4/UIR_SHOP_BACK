@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "orders")
@@ -23,6 +24,8 @@ public class Order {
     private @Getter @Setter Long totalAmount;
     @OneToOne(mappedBy = "order", cascade = CascadeType.ALL)
     private @Getter @Setter Payment payment;
+    @OneToMany(mappedBy ="orders")
+    private @Setter @Getter List<CommandeProduit> commandeProduits;
 
     public Order(Long id, Date orderDate, StatutOrder statutOrder, Long totalAmount) {
         this.orderDate = orderDate;
