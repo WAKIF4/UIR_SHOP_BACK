@@ -1,5 +1,8 @@
 package com.eclipse.UirShop.entitiesDto;
 
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
@@ -13,21 +16,27 @@ import java.util.List;
 @NoArgsConstructor
 public class ProductDto {
 
+
     private Long id;
     private String ref;
+
     @NotBlank(message = "Name cannot be empty")
     private String name;
-    @DecimalMin(value = "0.0", inclusive = false, message = "Value must be greater than 0.0")
-    @NotBlank(message = "Price cannot be null")
+
+    //@DecimalMin(value = "0.0", inclusive = false, message = "Value must be greater than 0.0")
+    //@NotBlank(message = "Price cannot be null")
     private double price;
-    @DecimalMin(value = "0.0", inclusive = false, message = "Value must be greater than 0.0")
-    @NotBlank(message = "Price cannot be null")
+
     private List<String> images;
 
-    @NotBlank(message = "Quantity cannot be null")
+    //@NotBlank(message = "Quantity cannot be null")
     private int quantity;
 
-
-
-
+    public ProductDto(String ref, String name, double price, List<String> images, int quantity) {
+        this.ref = ref;
+        this.name = name;
+        this.price = price;
+        this.images = images;
+        this.quantity = quantity;
+    }
 }

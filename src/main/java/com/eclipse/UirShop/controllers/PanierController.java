@@ -11,11 +11,14 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@AllArgsConstructor
 @RequestMapping("api/paniers")
 public class PanierController {
 
-    private PanierService panierService;
+    private final PanierService panierService;
+
+    public PanierController(PanierService panierService) {
+        this.panierService = panierService;
+    }
 
     // http://localhost:8080/api/paniers
     @GetMapping

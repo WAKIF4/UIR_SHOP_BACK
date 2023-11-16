@@ -16,23 +16,24 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private @Getter Long id;
+
     private @Getter String ref;
 
     @NotBlank(message = "Name cannot be empty")
     private @Getter @Setter String name;
 
-    @DecimalMin(value = "0.0", inclusive = false, message = "Value must be greater than 0.0")
-    @NotBlank(message = "Price cannot be null")
+    //@DecimalMin(value = "0.0", inclusive = false, message = "Value must be greater than 0.0")
+    // @NotBlank(message = "Price cannot be null")
     private @Getter @Setter double price;
     @ElementCollection
     @Size(min = 2, max = 5, message = "Images should have between 2 and 5 elements")
     private @Getter @Setter List<String> images;
-    @NotBlank(message = "Quantity cannot be null")
+    // @NotBlank(message = "Quantity cannot be null")
     private @Getter @Setter int quantity;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "panier_id")
-    private Panier panier;
+    @JoinColumn(name = "paniers_id")
+    private Panier paniers;
 
     public Product(String ref, String name, double price, List<String> images, int quantity) {
         this.ref = ref;
@@ -41,4 +42,5 @@ public class Product {
         this.images = images;
         this.quantity = quantity;
     }
+
 }

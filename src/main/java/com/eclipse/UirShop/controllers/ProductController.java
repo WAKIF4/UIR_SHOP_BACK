@@ -2,19 +2,24 @@ package com.eclipse.UirShop.controllers;
 
 import com.eclipse.UirShop.entitiesDto.ProductDto;
 import com.eclipse.UirShop.services.ProductService;
+import jakarta.validation.Valid;
 import lombok.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
-@AllArgsConstructor
 @RequestMapping("api/products")
 public class ProductController {
 
-    private ProductService productService;
+    private final ProductService productService;
+
+    public ProductController(ProductService productService) {
+        this.productService = productService;
+    }
 
     // http://localhost:8080/api/products
     @GetMapping
@@ -25,7 +30,7 @@ public class ProductController {
 
     //http://localhost:8080/api/products
     @PostMapping
-    public ResponseEntity<ProductDto> createProduct(@RequestBody ProductDto product) {
+    public ResponseEntity<ProductDto> createProduct(@RequestBody @Valid ProductDto product) {
         ProductDto saveProduct = productService.createProduct(product);
         return new ResponseEntity<>(saveProduct, HttpStatus.CREATED);
     }
@@ -39,12 +44,14 @@ public class ProductController {
 
 
     //http://localhost:8080/api/products/1
-    @PutMapping("{id}")
-    public ResponseEntity<ProductDto> updateProduct(@PathVariable("id") Long id,
-                                                    @RequestBody ProductDto productDto) {
-        ProductDto updateProduct = productService.updateProduct(productDto);
-        return new ResponseEntity<>(updateProduct, HttpStatus.OK);
+    @PutMapping("/{id}")
+    public ResponseEntity<Optional<ProductDto>> updateProduct(@PathVariable("id") Long id,
+                                                             @RequestBody @Valid ProductDto productDto) {
+        Optional< ProductDto> updatePro= productService.updateProduct(productDto, id);
+        return new ResponseEntity<>(updatePro, HttpStatus.OK);
     }
+
+
 
     // http://localhost:8080/api/products/1
     @DeleteMapping("{id}")

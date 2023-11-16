@@ -5,15 +5,6 @@ import com.eclipse.UirShop.entitiesDto.ProductDto;
 
 public class ProductMapper {
 
-    /*
-    public UserDTO toDto(User user) {
-        UserDTO userDTO = new UserDTO();
-        userDTO.setUsername(user.getUsername());
-        userDTO.setEmail(user.getEmail());
-        return userDTO;
-    }
-    */
-
     public static ProductDto mapToProductDto(Product product) {
         ProductDto productDto = new ProductDto(
                 product.getId(),
