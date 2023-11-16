@@ -9,11 +9,12 @@ import lombok.Setter;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+
 public class PanierDto {
 
     private Long id;
     private String ref;
-    @NotBlank(message = "Total Price cannot be null")
+//    @NotBlank(message = "Total Price cannot be null")
     private double totalPrice;
 
 }

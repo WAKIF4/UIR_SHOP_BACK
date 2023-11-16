@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -48,16 +49,18 @@ public class PanierService {
     }
 
 
-    public PanierDto updatePanier(Long id, PanierDto panierDto) {
-
-        Panier existingPanier = panierRepository.findById(id)
-                .orElseThrow(() -> new NotFoundException("Panier not found with id: " + id));
-
+    public Optional<PanierDto> updatePanier(Long id, PanierDto panierDto) {
+        Panier p=PanierMapper.mapToPanier(panierDto);
+        Optional<Panier> existingPanier = panierRepository.findById(id);
         // problem those note site ref
+        if(existingPanier.isPresent()){
+            Panier p1=existingPanier.get();
+            p1.setRef(p.getRef());
+            p1.setTotalPrice(p.getTotalPrice());
+            return Optional.of(PanierMapper.mapToPanierDto(panierRepository.save(p1)));
+        }
 
-        existingPanier.setTotalPrice(panierDto.getTotalPrice());
-        Panier updatedPanier = panierRepository.save(existingPanier);
-        return PanierMapper.mapToPanierDto(updatedPanier);
+        return Optional.empty();
     }
 
     public void deletePanier(Long id) {

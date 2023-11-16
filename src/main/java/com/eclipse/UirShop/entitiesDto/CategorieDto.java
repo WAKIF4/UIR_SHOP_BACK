@@ -1,4 +1,4 @@
-package com.eclipse.UirShop.enitiesDto;
+package com.eclipse.UirShop.entitiesDto;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;

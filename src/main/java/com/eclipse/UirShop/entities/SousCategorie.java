@@ -2,23 +2,28 @@ package com.eclipse.UirShop.entities;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+
+import java.util.List;
+
 
 @Entity
 @NoArgsConstructor
-@Data
+@Getter
+@Setter
+@AllArgsConstructor
 public class SousCategorie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  Long id;
-//    @NotBlank(message = "Name is required")
     @Column(unique = true)
     private  String nom;
     @JoinColumn(name = "categorie", referencedColumnName = "id")
     @ManyToOne
-//    @NotBlank(message = "Category is required")
     private  Categorie categorie;
+
+    @OneToMany(mappedBy = "souscategorie")
+    private List<Product> products;
 
     public SousCategorie(String nom) {
         this.nom = nom;

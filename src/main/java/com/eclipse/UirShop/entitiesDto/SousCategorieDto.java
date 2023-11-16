@@ -1,5 +1,6 @@
-package com.eclipse.UirShop.enitiesDto;
+package com.eclipse.UirShop.entitiesDto;
 
+import com.eclipse.UirShop.entitiesDto.CategorieDtoWNList;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,7 +12,7 @@ public class SousCategorieDto {
     @NotBlank(message = "name is required")
     private  String nom;
 
-    private  CategorieDtoWNList category;
+    private CategorieDtoWNList category;
 
     public SousCategorieDto(String nom, CategorieDtoWNList categorieDtoWNList) {
         this.nom = nom;

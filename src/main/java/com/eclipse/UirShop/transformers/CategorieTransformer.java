@@ -1,11 +1,8 @@
 package com.eclipse.UirShop.transformers;
 
-import com.eclipse.UirShop.enitiesDto.CategorieDto;
-import com.eclipse.UirShop.enitiesDto.CategorieDtoWNList;
+import com.eclipse.UirShop.entitiesDto.CategorieDto;
+import com.eclipse.UirShop.entitiesDto.CategorieDtoWNList;
 import com.eclipse.UirShop.entities.Categorie;
-import org.springframework.beans.factory.annotation.Autowired;
-
-import java.util.ArrayList;
 
 public class CategorieTransformer {
 

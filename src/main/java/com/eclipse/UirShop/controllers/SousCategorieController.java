@@ -1,6 +1,6 @@
 package com.eclipse.UirShop.controllers;
 
-import com.eclipse.UirShop.enitiesDto.SousCategorieDto;
+import com.eclipse.UirShop.entitiesDto.SousCategorieDto;
 import com.eclipse.UirShop.services.SousCategorieService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;

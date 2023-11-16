@@ -6,25 +6,32 @@ import com.eclipse.UirShop.entitiesDto.ProductDto;
 public class ProductMapper {
 
     public static ProductDto mapToProductDto(Product product) {
-        ProductDto productDto = new ProductDto(
-                product.getId(),
-                product.getRef(),
-                product.getName(),
-                product.getPrice(),
-                product.getImages(),
-                product.getQuantity()
-        );
+        ProductDto productDto = new ProductDto();
+        productDto.setId(product.getId());
+        productDto.setRef(product.getRef());
+        productDto.setName(product.getName());
+        productDto.setPrice( product.getPrice());
+        productDto.setImages(product.getImages());
+        productDto.setQuantity(product.getQuantity());
+        productDto.setNbview(product.getNbview());
+        productDto.setSousCategorie(Sous_CategorieTransformer.toDto(product.getSouscategorie()));
+
+
         return productDto;
     }
 
     public static Product mapToProduct(ProductDto productDto) {
-        Product product = new Product(
-                productDto.getRef(),
-                productDto.getName(),
-                productDto.getPrice(),
-                productDto.getImages(),
-                productDto.getQuantity()
-        );
+        Product product = new Product();
+
+        product.setId(productDto.getId());
+        product.setRef(productDto.getRef());
+        product.setName(productDto.getName());
+        product.setPrice( productDto.getPrice());
+        product.setImages(productDto.getImages());
+        product.setQuantity(productDto.getQuantity());
+        product.setNbview(productDto.getNbview());
+        product.setSouscategorie(Sous_CategorieTransformer.toEntity(productDto.getSousCategorie()));
+
         return product;
     }
 

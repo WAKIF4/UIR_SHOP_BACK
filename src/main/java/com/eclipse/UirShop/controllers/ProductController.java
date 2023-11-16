@@ -35,6 +35,8 @@ public class ProductController {
         return new ResponseEntity<>(saveProduct, HttpStatus.CREATED);
     }
 
+
+
     // http://localhost:8080/api/products/1
     @GetMapping("{id}")
     public ResponseEntity<ProductDto> getProductById(@PathVariable("id") Long id) {
@@ -44,7 +46,7 @@ public class ProductController {
 
 
     //http://localhost:8080/api/products/1
-    @PutMapping("/{id}")
+    @PutMapping("{id}")
     public ResponseEntity<Optional<ProductDto>> updateProduct(@PathVariable("id") Long id,
                                                              @RequestBody @Valid ProductDto productDto) {
         Optional< ProductDto> updatePro= productService.updateProduct(productDto, id);
@@ -58,6 +60,11 @@ public class ProductController {
     public ResponseEntity<String> deleteProduct(@PathVariable("id") Long id) {
         productService.deleteProduct(id);
         return new ResponseEntity<>("Product successfully deleted!", HttpStatus.OK);
+    }
+    @GetMapping("/views")
+    public ResponseEntity<List<ProductDto>> getProductOrderByView() {
+        List<ProductDto> products =  productService.getProductOrderByView();
+        return new ResponseEntity<>(products, HttpStatus.OK);
     }
 
 }

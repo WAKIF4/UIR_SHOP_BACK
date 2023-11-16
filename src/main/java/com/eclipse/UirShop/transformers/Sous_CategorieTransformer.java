@@ -1,6 +1,6 @@
 package com.eclipse.UirShop.transformers;
 
-import com.eclipse.UirShop.enitiesDto.SousCategorieDto;
+import com.eclipse.UirShop.entitiesDto.SousCategorieDto;
 import com.eclipse.UirShop.entities.SousCategorie;
 
 public class Sous_CategorieTransformer {

@@ -8,39 +8,49 @@ import lombok.*;
 
 import java.util.List;
 
+
 @Entity
-@Table(name="products")
 @NoArgsConstructor
+@Getter
+@Setter
+@AllArgsConstructor
 public class Product {
 
     @Id
+    
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private @Getter Long id;
+    private  Long id;
 
-    private @Getter String ref;
+    private  String ref;
 
     @NotBlank(message = "Name cannot be empty")
-    private @Getter @Setter String name;
+    private  String name;
 
     //@DecimalMin(value = "0.0", inclusive = false, message = "Value must be greater than 0.0")
     // @NotBlank(message = "Price cannot be null")
-    private @Getter @Setter double price;
-    @ElementCollection
-    @Size(min = 2, max = 5, message = "Images should have between 2 and 5 elements")
-    private @Getter @Setter List<String> images;
+    private  double price;
+//    @ElementCollection
+//    @Size(min = 2, max = 5, message = "Images should have between 2 and 5 elements")
+    private  List<String> images;
     // @NotBlank(message = "Quantity cannot be null")
-    private @Getter @Setter int quantity;
+    private  int quantity;
+    private Long nbview;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "paniers_id")
     private Panier paniers;
 
-    public Product(String ref, String name, double price, List<String> images, int quantity) {
+    @JoinColumn(name = "souscategorie", referencedColumnName = "id")
+    @ManyToOne
+    private  SousCategorie souscategorie;
+
+    public Product(Long id,String ref, String name, double price, List<String> images, int quantity,Long view) {
         this.ref = ref;
         this.name = name;
         this.price = price;
         this.images = images;
         this.quantity = quantity;
+        this.nbview=view;
     }
 
 }

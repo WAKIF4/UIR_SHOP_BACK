@@ -10,15 +10,16 @@ import java.util.List;
 @Table(name= "paniers")
 @AllArgsConstructor
 @NoArgsConstructor
+@Data
 public class Panier {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private @Getter Long id;
-    private @Getter String ref;
+    private  Long id;
+    private  String ref;
 
-    @NotBlank(message = "Total Price cannot be null")
-    private @Getter @Setter double totalPrice;
+//    @NotBlank(message = "Total Price cannot be null")
+    private   double totalPrice;
 
 
     @OneToMany(mappedBy = "paniers", cascade = CascadeType.ALL)

@@ -12,13 +12,14 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 
 @Data
-@AllArgsConstructor
+//@AllArgsConstructor
 @NoArgsConstructor
 public class ProductDto {
 
 
     private Long id;
     private String ref;
+    private Long nbview;
 
     @NotBlank(message = "Name cannot be empty")
     private String name;
@@ -31,12 +32,15 @@ public class ProductDto {
 
     //@NotBlank(message = "Quantity cannot be null")
     private int quantity;
+    private SousCategorieDto sousCategorie;
 
-    public ProductDto(String ref, String name, double price, List<String> images, int quantity) {
-        this.ref = ref;
-        this.name = name;
-        this.price = price;
-        this.images = images;
-        this.quantity = quantity;
-    }
+//    public ProductDto(Long id,String ref, String name, double price, List<String> images, int quantity,Long nbview) {
+//        this.id=id;
+//        this.ref = ref;
+//        this.name = name;
+//        this.price = price;
+//        this.images = images;
+//        this.quantity = quantity;
+//        this.nbview=nbview;
+//    }
 }
