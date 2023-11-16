@@ -27,7 +27,7 @@ public class SousCategorieController {
         return  new ResponseEntity<>(sgdto,HttpStatus.OK);
     }
     @PostMapping("/souscategorie")
-    public ResponseEntity<Optional<SousCategorieDto>> addSousCategorie( @RequestBody SousCategorieDto sousCategorieDto) {
+    public ResponseEntity<Optional<SousCategorieDto>> addSousCategorie(@Valid @RequestBody SousCategorieDto sousCategorieDto) {
         Optional<SousCategorieDto>sgdto= sousCategorieService.addSousCategorie(sousCategorieDto);
         return new ResponseEntity<>(sgdto,HttpStatus.CREATED);
     }

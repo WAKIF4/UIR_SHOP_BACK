@@ -2,6 +2,7 @@ package com.eclipse.UirShop.services;
 
 import com.eclipse.UirShop.enitiesDto.CategorieDtoWNList;
 import com.eclipse.UirShop.entities.Categorie;
+import com.eclipse.UirShop.exceptions.NotFoundException;
 import com.eclipse.UirShop.repositories.ICategorieRepository;
 import com.eclipse.UirShop.transformers.CategorieTransformer;
 import org.springframework.beans.factory.annotation.Autowired;

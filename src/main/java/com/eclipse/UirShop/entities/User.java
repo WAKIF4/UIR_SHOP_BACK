@@ -28,6 +28,7 @@ public class User {
     private @Setter @Getter String lastname;
     @Email(message = "Email should be valid")
     @NotBlank(message = "Email is required")
+    @Column(unique = true)
     private @Setter @Getter String email;
 
     @NotBlank(message = "Password is required")
@@ -41,6 +42,7 @@ public class User {
             message = "Phone number should start with 06, 07, 08, or 05 followed by 9 digits"
     )
     private @Setter @Getter String phone;
+    @Enumerated(EnumType.STRING)
     private @Setter @Getter Role role;
 
     public User(String firstname, String lastname, String email, String phone) {

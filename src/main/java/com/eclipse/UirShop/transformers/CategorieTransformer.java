@@ -9,8 +9,6 @@ import java.util.ArrayList;
 
 public class CategorieTransformer {
 
-//    @Autowired
-//    private Categorie c;
 
     public static Categorie toEntity(CategorieDtoWNList categorieDtoWNList){
         Categorie c=new Categorie();

@@ -1,14 +1,16 @@
 package com.eclipse.UirShop.entitiesDto;
 
 import com.eclipse.UirShop.enums.Role;
+import jakarta.persistence.Column;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import org.hibernate.validator.constraints.UniqueElements;
+import org.springframework.boot.context.properties.bind.DefaultValue;
 
 @Data
 @NoArgsConstructor
@@ -25,6 +27,7 @@ public class UserDto {
     private @Setter @Getter String lastname;
     @Email(message = "Email should be valid")
     @NotBlank(message = "Email is required")
+    @Column(unique = true)
     private @Setter @Getter String email;
 
     @NotBlank(message = "Password is required")
@@ -38,6 +41,7 @@ public class UserDto {
             message = "Phone number should start with 06, 07, 08, or 05 followed by 9 digits"
     )
     private @Setter @Getter String phone;
+    @Enumerated(EnumType.STRING)
     private @Setter @Getter Role role;
 
     public UserDto(String firstname, String lastname, String email, String phone) {

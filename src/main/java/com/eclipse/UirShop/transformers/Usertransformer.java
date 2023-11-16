@@ -2,6 +2,7 @@ package com.eclipse.UirShop.transformers;
 
 import com.eclipse.UirShop.entities.User;
 import com.eclipse.UirShop.entitiesDto.UserDto;
+import com.eclipse.UirShop.entitiesDto.UserDtoWPass;
 import com.eclipse.UirShop.exceptions.TransformationException;
 
 public class Usertransformer {
@@ -44,6 +45,27 @@ public class Usertransformer {
             return user;
         } catch (Exception e) {
             throw new TransformationException("Error transforming UserDto to User entity.", e);
+        }
+    }
+
+    public static UserDtoWPass toDtoPass(User user) {
+        if (user == null) {
+            throw new TransformationException("User is null. Cannot transform to UserDtoPassword.");
+        }
+
+        try {
+            UserDtoWPass userDto = new UserDtoWPass();
+            userDto.setEmail(user.getEmail());
+            userDto.setId(user.getId());
+            userDto.setFirstname(user.getFirstname());
+            userDto.setLastname(user.getLastname());
+            userDto.setRole(user.getRole());
+            userDto.setPhone(user.getPhone());
+
+            return userDto;
+        }
+        catch (Exception e) {
+            throw new TransformationException("Error transforming User entity to UserDtoPassword.", e);
         }
     }
 

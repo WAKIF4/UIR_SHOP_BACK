@@ -36,9 +36,7 @@ public class SousCategorieService {
         return Optional.of(Sous_CategorieTransformer.toDto(sg.orElseThrow()));}
 
     public Optional<SousCategorieDto>addSousCategorie(SousCategorieDto sousCategorieDto){
-//        Categorie c=categorieRepository.findById(sousCategorieDto.getCategorieDtoWNList().getId()).orElseThrow(()->{
-//          return new NotFoundException("Category not found");});
-//        sousCategorieDto.setCategorieDtoWNList(CategorieTransformer.toDtoWl(c));
+
         SousCategorie sousCategorie=sousCategorieRepository.save(Sous_CategorieTransformer.toEntity(sousCategorieDto));
         return Optional.of(Sous_CategorieTransformer.toDto(sousCategorie));
     }

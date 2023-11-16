@@ -14,7 +14,7 @@ public class Categorie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private   Long id;
-//    @NotBlank(message = "name is required")
+    @NotBlank(message = "name is required")
     @Column(unique = true)
     private  String nom;
     @OneToMany(mappedBy = "categorie")

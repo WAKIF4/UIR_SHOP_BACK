@@ -2,6 +2,7 @@ package com.eclipse.UirShop.controllers;
 
 import com.eclipse.UirShop.enitiesDto.CategorieDtoWNList;
 import com.eclipse.UirShop.services.CategorieService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,7 +28,7 @@ public class CategorieController {
         return new ResponseEntity<>(cdt, HttpStatus.OK);
     }
     @PostMapping("/categories")
-    public ResponseEntity<Optional<CategorieDtoWNList>> addCategorie(@RequestBody CategorieDtoWNList cdtl) {
+    public ResponseEntity<Optional<CategorieDtoWNList>> addCategorie(@Valid @RequestBody CategorieDtoWNList cdtl) {
         Optional<CategorieDtoWNList> cdt= categorieService.addCategorie(cdtl);
         return  new ResponseEntity<>(cdt,HttpStatus.CREATED);
     }

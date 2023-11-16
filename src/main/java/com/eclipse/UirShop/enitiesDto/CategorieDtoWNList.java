@@ -9,10 +9,11 @@ import lombok.Setter;
 @Data
 public class CategorieDtoWNList {
     private  Long id;
-//    @NotBlank(message = "name is required")
+    @NotBlank(message = "name is required")
     private  String nom;
 
     public CategorieDtoWNList(String nom) {
         this.nom = nom;
     }
+
 }
