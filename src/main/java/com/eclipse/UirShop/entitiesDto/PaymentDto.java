@@ -25,5 +25,4 @@ public class PaymentDto {
         this.securityCode = securityCode;
         this.order = order;
     }
-
 }

@@ -27,7 +27,7 @@ public class OrderService {
 
     public OrderDto createOrder(OrderDto orderDto) {
         Order order = new Order(
-                orderDto.getOrderDate(),
+                orderDto.getId(), orderDto.getOrderDate(),
                 orderDto.getStatutOrder(),
                 orderDto.getTotalAmount()
         );

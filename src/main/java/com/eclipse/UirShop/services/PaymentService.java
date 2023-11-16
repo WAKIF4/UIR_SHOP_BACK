@@ -1,7 +1,9 @@
 package com.eclipse.UirShop.services;
 
+import com.eclipse.UirShop.entities.Order;
 import com.eclipse.UirShop.entities.Payment;
 import com.eclipse.UirShop.entitiesDto.PaymentDto;
+import com.eclipse.UirShop.repositories.IOrderRepository;
 import com.eclipse.UirShop.repositories.IPaymentRepository;
 import com.eclipse.UirShop.transformer.PaymentTransformer;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,8 @@ import java.util.Optional;
 public class PaymentService {
     @Autowired
     private IPaymentRepository paymentRepository;
+    @Autowired
+    private IOrderRepository orderRepository;
 
     public List<PaymentDto> getAllPayments() {
         List<Payment> payments = paymentRepository.findAll();
@@ -26,6 +30,9 @@ public class PaymentService {
     }
 
     public PaymentDto createPayment(PaymentDto paymentDto) {
+
+
+
         Payment payment = new Payment(
                 paymentDto.getFirstName(),
                 paymentDto.getLastName(),

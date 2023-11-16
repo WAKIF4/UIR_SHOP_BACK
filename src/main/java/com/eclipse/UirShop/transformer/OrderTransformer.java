@@ -17,11 +17,23 @@ public class OrderTransformer {
                 order.getTotalAmount()
         );
     }
+    public static Order convertOrderToEntity(OrderDto orderDto) {
+
+        return new Order(
+                orderDto.getId(),
+                orderDto.getOrderDate(),
+                orderDto.getStatutOrder(),
+                orderDto.getTotalAmount()
+        );
+    }
+
+
 
     public static List<OrderDto> convertOrdersToDtoList(List<Order> orders) {
         return orders.stream()
                 .map(OrderTransformer::convertOrderToDto)
                 .collect(Collectors.toList());
     }
+
 
 }

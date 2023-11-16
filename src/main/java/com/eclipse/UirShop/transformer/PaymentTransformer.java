@@ -1,5 +1,6 @@
 package com.eclipse.UirShop.transformer;
 
+import com.eclipse.UirShop.entities.Order;
 import com.eclipse.UirShop.entities.Payment;
 import com.eclipse.UirShop.entitiesDto.PaymentDto;
 
@@ -8,6 +9,7 @@ import java.util.stream.Collectors;
 
 public class PaymentTransformer {
     public static PaymentDto convertPaymentToDto(Payment payment) {
+
         return new PaymentDto(
                 payment.getId(),
                 payment.getFirstName(),
@@ -18,6 +20,7 @@ public class PaymentTransformer {
                 payment.getSecurityCode(),
                 payment.getOrder()
         );
+
     }
 
     public static List<PaymentDto> convertPaymentsToDtoList(List<Payment> payments) {
@@ -25,4 +28,5 @@ public class PaymentTransformer {
                 .map(PaymentTransformer::convertPaymentToDto)
                 .collect(Collectors.toList());
     }
+
 }
