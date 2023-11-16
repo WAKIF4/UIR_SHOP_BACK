@@ -1,5 +1,6 @@
 package com.eclipse.UirShop.entitiesDto;
 
+<<<<<<< HEAD
 import com.eclipse.UirShop.enums.Role;
 import jakarta.persistence.Column;
 import jakarta.persistence.EnumType;
@@ -51,4 +52,7 @@ public class UserDto {
         this.phone = phone;
         this.role = Role.CLIENT;
     }
+=======
+public class UserDto {
+>>>>>>> origin/Entity-Products-Panier
 }
