@@ -48,9 +48,9 @@ public class PaymentController {
         }
     }
 
-    @DeleteMapping("/delete/{paymentId}")
-    public ResponseEntity<Void> deletePayment(@PathVariable Long paymentId) {
-        paymentService.deletePayment(paymentId);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-    }
+//    @DeleteMapping("/delete/{paymentId}")
+//    public ResponseEntity<Void> deletePayment(@PathVariable Long paymentId) {
+//        paymentService.deletePayment(paymentId);
+//        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+//    }
 }

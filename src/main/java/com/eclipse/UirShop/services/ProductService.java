@@ -105,23 +105,13 @@ public class ProductService {
 
 return Optional.empty();
     }
-
-
-
-    public void deleteProduct(Long id) {
+    public void deleteProduct(Long id){
         productsRepository.deleteById(id);
     }
+    public List<ProductDto>findAllProductsByCat(Long id){
+        List<Product>products=productsRepository.findAllProductsByCat(id);
+        return products.stream().map(ProductMapper::mapToProductDto).toList();
 
-//    public void findProductByCategorie(Long id){
-//        Categorie categorie=categorieRepository.findById(id).get();
-//        List< SousCategorie>findCat=sousCategorieRepository.findSousCategorieByCategorie(categorie);
-//        List<List<Product>>productList=new ArrayList<>();
-//        for(SousCategorie s:findCat){
-//            List<Product>lproduct=productsRepository.findProductBySouscategorie(s);
-//            productList.add(lproduct);
-//
-//        }
-//        System.out.println(productList);
-//    }
+    }
 
 }

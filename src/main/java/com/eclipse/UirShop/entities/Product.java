@@ -34,7 +34,7 @@ public class Product {
     private  List<String> images;
     // @NotBlank(message = "Quantity cannot be null")
     private  int quantity;
-    private Long nbview;
+    private Long nbview=0L;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "paniers_id")
@@ -64,7 +64,7 @@ public class Product {
         this.price = price;
         this.images = images;
         this.quantity = quantity;
-        this.nbview=view;
+        this.nbview=0L;
     }
 
 }

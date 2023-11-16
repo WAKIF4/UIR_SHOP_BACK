@@ -3,9 +3,11 @@ package com.eclipse.UirShop.entities;
 import com.eclipse.UirShop.enums.StatutOrder;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 import java.util.List;
@@ -17,7 +19,7 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private @Getter @Setter Long id;
-    @Temporal(TemporalType.TIME)
+
     private @Getter @Setter Date orderDate;
     @Enumerated(EnumType.STRING)
     private @Getter @Setter StatutOrder statutOrder;

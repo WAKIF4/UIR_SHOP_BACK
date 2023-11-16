@@ -19,7 +19,7 @@ public class ProductDto {
 
     private Long id;
     private String ref;
-    private Long nbview;
+    private Long nbview=0L;
 
     @NotBlank(message = "Name cannot be empty")
     private String name;

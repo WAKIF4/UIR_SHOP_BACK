@@ -64,7 +64,7 @@ public class PaymentService {
         }
     }
 
-    public void deletePayment(Long paymentId) {
-        paymentRepository.deleteById(paymentId);
-    }
+//    public void deletePayment(Long paymentId) {
+//        paymentRepository.deleteById(paymentId);
+//    }
 }

@@ -67,10 +67,10 @@ public class ProductController {
         List<ProductDto> products =  productService.getProductOrderByView();
         return new ResponseEntity<>(products, HttpStatus.OK);
     }
-//    @GetMapping("/products/categorie/{id}")
+    @GetMapping("/categorie/{id}")
+        public ResponseEntity<List<ProductDto>> findAllProductsByCat(@PathVariable Long id) {
+        List<ProductDto> products=productService.findAllProductsByCat(id);
+        return new ResponseEntity<>(products, HttpStatus.OK);
+    }
 
-//    public ResponseEntity<List<List<Product>>> findProductByCategorie(@PathVariable Long id) {
-//        List<List<Product>>lProduct= productService.findProductByCategorie(id);
-//        return new ResponseEntity<>(lProduct, HttpStatus.OK);
-//    }
 }
