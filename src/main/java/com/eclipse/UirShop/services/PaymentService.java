@@ -2,13 +2,11 @@ package com.eclipse.UirShop.services;
 
 import com.eclipse.UirShop.entities.Order;
 import com.eclipse.UirShop.entities.Payment;
-import com.eclipse.UirShop.entitiesDto.OrderDto;
 import com.eclipse.UirShop.entitiesDto.PaymentDto;
 import com.eclipse.UirShop.exceptions.NotFoundException;
 import com.eclipse.UirShop.repositories.IOrderRepository;
 import com.eclipse.UirShop.repositories.IPaymentRepository;
-import com.eclipse.UirShop.transformer.OrderTransformer;
-import com.eclipse.UirShop.transformer.PaymentTransformer;
+import com.eclipse.UirShop.transformers.PaymentTransformer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

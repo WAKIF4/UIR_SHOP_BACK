@@ -1,5 +1,6 @@
 package com.eclipse.UirShop.entities;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
@@ -18,6 +19,7 @@ public class SousCategorie {
     private  Long id;
     @Column(unique = true)
     private  String nom;
+
     @JoinColumn(name = "categorie", referencedColumnName = "id")
     @ManyToOne
     private  Categorie categorie;

@@ -1,8 +1,7 @@
-package com.eclipse.UirShop.transformer;
+package com.eclipse.UirShop.transformers;
 
 import com.eclipse.UirShop.entities.Order;
 import com.eclipse.UirShop.entitiesDto.OrderDto;
-import com.eclipse.UirShop.entitiesDto.PaymentDto;
 
 import java.util.List;
 import java.util.stream.Collectors;

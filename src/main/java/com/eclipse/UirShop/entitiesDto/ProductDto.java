@@ -33,6 +33,7 @@ public class ProductDto {
     //@NotBlank(message = "Quantity cannot be null")
     private int quantity;
     private SousCategorieDto sousCategorie;
+    private StudentDto studentDto;
 
 //    public ProductDto(Long id,String ref, String name, double price, List<String> images, int quantity,Long nbview) {
 //        this.id=id;

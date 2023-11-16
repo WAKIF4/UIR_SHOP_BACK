@@ -16,7 +16,7 @@ public class UirShopApplication implements CommandLineRunner {
 	ProductService productService;
 	@Override
 	public void run(String... args) throws Exception {
-     productService.findProductByCategorie(2L);
+//     productService.findProductByCategorie(2L);
 
 	}
 }

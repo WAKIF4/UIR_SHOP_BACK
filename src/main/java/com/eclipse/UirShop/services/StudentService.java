@@ -4,11 +4,10 @@ import com.eclipse.UirShop.entities.Student;
 import com.eclipse.UirShop.entitiesDto.StudentDto;
 import com.eclipse.UirShop.repositories.IStudentRepository;
 
-import com.eclipse.UirShop.transformerDto.StudentTransformer;
+import com.eclipse.UirShop.transformers.StudentTransformer;
 import jakarta.persistence.EntityNotFoundException;
 import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 
@@ -55,16 +54,15 @@ public class StudentService {
 
         Student existingStudent = studentRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Student with id " + id + " not found"));
-
-        existingStudent.setFullname(updatedStudentDto.getFullname());
-        existingStudent.setPhonenumber(updatedStudentDto.getPhonenumber());
-        existingStudent.setEmail(updatedStudentDto.getEmail());
-        existingStudent.setBiography(updatedStudentDto.getBiography());
-        existingStudent.setImage(updatedStudentDto.getImage());
-        existingStudent.setInstagram(updatedStudentDto.getInstagram());
-        existingStudent.setFacebook(updatedStudentDto.getFacebook());
-        existingStudent.setTiktok(updatedStudentDto.getTiktok());
-
+        Student student=StudentTransformer.studentDtoTransformToEntity(updatedStudentDto);
+        existingStudent.setFullname(student.getFullname());
+        existingStudent.setPhonenumber(student.getPhonenumber());
+        existingStudent.setEmail(student.getEmail());
+        existingStudent.setBiography(student.getBiography());
+        existingStudent.setImage(student.getImage());
+        existingStudent.setInstagram(student.getInstagram());
+        existingStudent.setFacebook(student.getFacebook());
+        existingStudent.setTiktok(student.getTiktok());
         Student updatedStudent = studentRepository.save(existingStudent);
 
         return StudentTransformer.studentTransformToDto(updatedStudent);

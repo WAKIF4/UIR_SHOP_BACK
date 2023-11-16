@@ -40,6 +40,8 @@ public class StudentDto {
     @Getter @Setter
     private String biography;
 
+
+
     @NotBlank(message = "Image is required")
     @Getter @Setter
     private String image;
@@ -59,8 +61,7 @@ public class StudentDto {
     private String tiktok;
 
 
-    @Getter @Setter
-    List<Product> productList;
+
 
 }
 

@@ -3,7 +3,7 @@ package com.eclipse.UirShop.services;
 import com.eclipse.UirShop.entities.Order;
 import com.eclipse.UirShop.entitiesDto.OrderDto;
 import com.eclipse.UirShop.repositories.IOrderRepository;
-import com.eclipse.UirShop.transformer.OrderTransformer;
+import com.eclipse.UirShop.transformers.OrderTransformer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

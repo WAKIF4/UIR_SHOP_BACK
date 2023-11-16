@@ -1,4 +1,4 @@
-package com.eclipse.UirShop.transformerDto;
+package com.eclipse.UirShop.transformers;
 
 import com.eclipse.UirShop.entities.Student;
 import com.eclipse.UirShop.entitiesDto.StudentDto;
@@ -18,8 +18,8 @@ public class StudentTransformer {
                 student.getImage(),
                 student.getInstagram(),
                 student.getFacebook(),
-                student.getTiktok(),
-                student.getProductList()
+                student.getTiktok()
+
         );
     }
 

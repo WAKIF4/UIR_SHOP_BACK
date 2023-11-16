@@ -3,11 +3,15 @@ package com.eclipse.UirShop.services;
 import com.eclipse.UirShop.entities.Categorie;
 import com.eclipse.UirShop.entities.Product;
 import com.eclipse.UirShop.entities.SousCategorie;
+import com.eclipse.UirShop.entities.Student;
+import com.eclipse.UirShop.entitiesDto.CategorieDto;
 import com.eclipse.UirShop.entitiesDto.ProductDto;
 import com.eclipse.UirShop.exceptions.NotFoundException;
 import com.eclipse.UirShop.repositories.ICategorieRepository;
 import com.eclipse.UirShop.repositories.ISousCategorieRepository;
+import com.eclipse.UirShop.repositories.IStudentRepository;
 import com.eclipse.UirShop.repositories.ProductsRepository;
+import com.eclipse.UirShop.transformers.CategorieTransformer;
 import com.eclipse.UirShop.transformers.ProductMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,11 +27,14 @@ public class ProductService {
     private final ProductsRepository productsRepository;
     private final ISousCategorieRepository sousCategorieRepository;
 
+    private final IStudentRepository studentRepository;
+
     private final ICategorieRepository categorieRepository;
     @Autowired
-    public ProductService(ProductsRepository productsRepository, ISousCategorieRepository sousCategorieRepository, ICategorieRepository categorieRepository) {
+    public ProductService(ProductsRepository productsRepository, ISousCategorieRepository sousCategorieRepository, IStudentRepository studentRepository, ICategorieRepository categorieRepository) {
         this.productsRepository = productsRepository;
         this.sousCategorieRepository = sousCategorieRepository;
+        this.studentRepository = studentRepository;
         this.categorieRepository = categorieRepository;
     }
 
@@ -36,8 +43,21 @@ public class ProductService {
 
 
 
+
+
+
     public ProductDto createProduct(ProductDto productDto) {
+        Student st = studentRepository.findById(productDto.getStudentDto().getId()).orElseThrow(()->{
+            return new NotFoundException("Student Not found");
+        });
+        SousCategorie sc=sousCategorieRepository.findById(productDto.getSousCategorie().getId())
+                .orElseThrow(()->{
+            return new NotFoundException("Sous categorie Not found");
+        });
+
         Product product = ProductMapper.mapToProduct(productDto);
+        product.setStudent(st);
+        product.setSouscategorie(sc);
         Product saveProduct = productsRepository.save(product);
         return ProductMapper.mapToProductDto(saveProduct);
     }
@@ -92,15 +112,16 @@ return Optional.empty();
         productsRepository.deleteById(id);
     }
 
-    public void findProductByCategorie(Long id){
-        Categorie categorie=categorieRepository.findById(id).get();
-        List< SousCategorie>findCat=sousCategorieRepository.findSousCategorieByCategorie(categorie);
-        List<List<Product>>productList=new ArrayList<>();
-        for(SousCategorie s:findCat){
-            List<Product>lproduct=productsRepository.findProductBySouscategorie(s);
-            productList.add(lproduct);
+//    public void findProductByCategorie(Long id){
+//        Categorie categorie=categorieRepository.findById(id).get();
+//        List< SousCategorie>findCat=sousCategorieRepository.findSousCategorieByCategorie(categorie);
+//        List<List<Product>>productList=new ArrayList<>();
+//        for(SousCategorie s:findCat){
+//            List<Product>lproduct=productsRepository.findProductBySouscategorie(s);
+//            productList.add(lproduct);
+//
+//        }
+//        System.out.println(productList);
+//    }
 
-        }
-        System.out.println(productList);
-    }
 }

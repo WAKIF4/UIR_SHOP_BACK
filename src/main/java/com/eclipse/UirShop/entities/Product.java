@@ -43,8 +43,20 @@ public class Product {
     @JoinColumn(name = "souscategorie", referencedColumnName = "id")
     @ManyToOne
     private  SousCategorie souscategorie;
-    @OneToMany(mappedBy ="product")
+    @OneToMany(mappedBy ="product",cascade = CascadeType.ALL)
+
     private @Setter @Getter List<CommandeProduit> commandeProduits;
+
+    @JoinColumn(name = "student", referencedColumnName = "id")
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    private  Student student;
+
+
+
+
+
+
+
 
     public Product(Long id,String ref, String name, double price, List<String> images, int quantity,Long view) {
         this.ref = ref;

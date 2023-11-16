@@ -1,5 +1,6 @@
 package com.eclipse.UirShop.controllers;
 
+import com.eclipse.UirShop.entities.Product;
 import com.eclipse.UirShop.entitiesDto.ProductDto;
 import com.eclipse.UirShop.services.ProductService;
 import jakarta.validation.Valid;
@@ -30,7 +31,7 @@ public class ProductController {
 
     //http://localhost:8080/api/products
     @PostMapping
-    public ResponseEntity<ProductDto> createProduct(@RequestBody @Valid ProductDto product) {
+    public ResponseEntity<ProductDto> createProduct(@Valid @RequestBody ProductDto product) {
         ProductDto saveProduct = productService.createProduct(product);
         return new ResponseEntity<>(saveProduct, HttpStatus.CREATED);
     }
@@ -66,5 +67,10 @@ public class ProductController {
         List<ProductDto> products =  productService.getProductOrderByView();
         return new ResponseEntity<>(products, HttpStatus.OK);
     }
+//    @GetMapping("/products/categorie/{id}")
 
+//    public ResponseEntity<List<List<Product>>> findProductByCategorie(@PathVariable Long id) {
+//        List<List<Product>>lProduct= productService.findProductByCategorie(id);
+//        return new ResponseEntity<>(lProduct, HttpStatus.OK);
+//    }
 }
