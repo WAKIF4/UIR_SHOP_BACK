@@ -3,7 +3,6 @@ package com.eclipse.UirShop.entities;
 import com.eclipse.UirShop.enums.ModePayment;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
-import jdk.jfr.Name;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -27,13 +26,12 @@ public class Payment {
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private @Getter @Setter Order order;
 
-    public Payment(String firstName, String lastName, ModePayment modePayment, String numberCard, String expirationDate, String securityCode,Order order) {
+    public Payment(String firstName, String lastName, ModePayment modePayment, String numberCard, String expirationDate, String securityCode, Order orderId) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.modePayment = modePayment;
         this.numberCard = numberCard;
         this.expirationDate = expirationDate;
         this.securityCode = securityCode;
-        this.order = order;
     }
 }

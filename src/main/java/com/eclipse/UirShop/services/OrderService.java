@@ -32,8 +32,6 @@ public class OrderService {
                 orderDto.getTotalAmount()
         );
 
-
-
         orderRepository.save(order);
         return OrderTransformer.convertOrderToDto(order);
     }
@@ -59,4 +57,5 @@ public class OrderService {
     public void deleteOrder(Long orderId) {
         orderRepository.deleteById(orderId);
     }
+
 }
