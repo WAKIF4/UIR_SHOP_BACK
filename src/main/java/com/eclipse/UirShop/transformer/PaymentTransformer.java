@@ -18,7 +18,21 @@ public class PaymentTransformer {
                 payment.getNumberCard(),
                 payment.getExpirationDate(),
                 payment.getSecurityCode(),
-                payment.getOrder()
+                OrderTransformer.convertOrderToDto(payment.getOrder())
+        );
+
+    }
+
+    public static Payment toEntity(PaymentDto paymentDto) {
+
+        return new Payment(
+                paymentDto.getFirstName(),
+                paymentDto.getLastName(),
+                paymentDto.getModePayment(),
+                paymentDto.getNumberCard(),
+                paymentDto.getExpirationDate(),
+                paymentDto.getSecurityCode(),
+                paymentDto.getOrderDto()
         );
 
     }

@@ -1,5 +1,6 @@
 package com.eclipse.UirShop.controllers;
 
+import com.eclipse.UirShop.entitiesDto.OrderDto;
 import com.eclipse.UirShop.entitiesDto.PaymentDto;
 import com.eclipse.UirShop.services.PaymentService;
 import org.springframework.beans.factory.annotation.Autowired;

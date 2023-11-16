@@ -13,7 +13,7 @@ public class OrderDto {
     private @Getter @Setter Date orderDate;
     private @Getter @Setter StatutOrder statutOrder;
     private @Getter @Setter Long totalAmount;
-    private @Getter @Setter Payment payment;
+
 
     public OrderDto(Long id, Date orderDate, StatutOrder statutOrder, Long totalAmount) {
         this.id = id;

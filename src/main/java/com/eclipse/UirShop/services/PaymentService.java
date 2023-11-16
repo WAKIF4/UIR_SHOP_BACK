@@ -2,9 +2,12 @@ package com.eclipse.UirShop.services;
 
 import com.eclipse.UirShop.entities.Order;
 import com.eclipse.UirShop.entities.Payment;
+import com.eclipse.UirShop.entitiesDto.OrderDto;
 import com.eclipse.UirShop.entitiesDto.PaymentDto;
+import com.eclipse.UirShop.exceptions.NotFoundException;
 import com.eclipse.UirShop.repositories.IOrderRepository;
 import com.eclipse.UirShop.repositories.IPaymentRepository;
+import com.eclipse.UirShop.transformer.OrderTransformer;
 import com.eclipse.UirShop.transformer.PaymentTransformer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,20 +34,18 @@ public class PaymentService {
 
     public PaymentDto createPayment(PaymentDto paymentDto) {
 
+            Order order = orderRepository.findById(paymentDto.getOrderDto().getId()).orElseThrow(()->{
+                return new NotFoundException("Order not found");
+            });
+
+            Payment payment = PaymentTransformer.toEntity(paymentDto);
+            payment.setOrder(order);
+
+            paymentRepository.save(payment);
+
+            return PaymentTransformer.convertPaymentToDto(payment);
 
 
-        Payment payment = new Payment(
-                paymentDto.getFirstName(),
-                paymentDto.getLastName(),
-                paymentDto.getModePayment(),
-                paymentDto.getNumberCard(),
-                paymentDto.getExpirationDate(),
-                paymentDto.getSecurityCode(),
-                paymentDto.getOrder()
-        );
-
-        paymentRepository.save(payment);
-        return PaymentTransformer.convertPaymentToDto(payment);
     }
 
     public PaymentDto updatePayment(Long paymentId, PaymentDto updatedPaymentDto) {

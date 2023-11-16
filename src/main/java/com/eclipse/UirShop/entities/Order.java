@@ -15,14 +15,13 @@ import java.util.Date;
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private @Getter Long id;
+    private @Getter @Setter Long id;
     @Temporal(TemporalType.TIME)
     private @Getter @Setter Date orderDate;
     @Enumerated(EnumType.STRING)
     private @Getter @Setter StatutOrder statutOrder;
     private @Getter @Setter Long totalAmount;
-    @OneToOne(mappedBy = "order")
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @OneToOne(mappedBy = "order", cascade = CascadeType.ALL)
     private @Getter @Setter Payment payment;
 
     public Order(Long id, Date orderDate, StatutOrder statutOrder, Long totalAmount) {
